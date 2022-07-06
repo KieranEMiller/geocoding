@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1585
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KEM.Maps.Geocoding", "KEM.Maps.Geocoding\KEM.Maps.Geocoding.csproj", "{32838E04-41E6-4853-9FE7-5717409527D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KEM.Maps.Geocoding.Tests", "KEM.Maps.Geocoding.Tests\KEM.Maps.Geocoding.Tests.csproj", "{05B70830-151D-4FE0-AF4C-EA6464E52FE1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{32838E04-41E6-4853-9FE7-5717409527D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32838E04-41E6-4853-9FE7-5717409527D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32838E04-41E6-4853-9FE7-5717409527D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32838E04-41E6-4853-9FE7-5717409527D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05B70830-151D-4FE0-AF4C-EA6464E52FE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05B70830-151D-4FE0-AF4C-EA6464E52FE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05B70830-151D-4FE0-AF4C-EA6464E52FE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05B70830-151D-4FE0-AF4C-EA6464E52FE1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E30C6B82-A979-4F82-B7AA-8C1604F01E46}
+	EndGlobalSection
+EndGlobal
