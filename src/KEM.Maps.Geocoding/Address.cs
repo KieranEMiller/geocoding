@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KEM.Maps.Geocoding
 {
-    public class Address : IGeolocatable
+    public class Address : IGeolocatableByAddress, IGeolocatableByCoordinates
     {
         public string Id { get; set; }
 
@@ -20,8 +20,8 @@ namespace KEM.Maps.Geocoding
 
         public string Zip { get; set; }
 
-        public decimal Latitude { get; set; }
+        public double Latitude { get; set; }
 
-        public decimal Longitude { get; set; }
+        public double Longitude { get; set; }
     }
 }
