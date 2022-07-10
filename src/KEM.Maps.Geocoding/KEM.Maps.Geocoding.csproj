@@ -43,7 +43,8 @@
   <ItemGroup>
     <Compile Include="Address.cs" />
     <Compile Include="Data\IGeocodingDataSource.cs" />
-    <Compile Include="IGeolocatable.cs" />
+    <Compile Include="IGeolocatableByAddress.cs" />
+    <Compile Include="IGeolocatableByCoordinates.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
