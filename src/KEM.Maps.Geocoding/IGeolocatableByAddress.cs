@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KEM.Maps.Geocoding
 {
-    interface IGeolocatableByAddress
+    public interface IGeolocatableByAddress
     {
         string Street1 { get; set; }
 
