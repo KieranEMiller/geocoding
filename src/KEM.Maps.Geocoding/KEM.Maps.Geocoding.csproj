@@ -49,6 +49,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Google\GoogleConstants.cs" />
     <Compile Include="Services\Google\GoogleMaps.cs" />
+    <Compile Include="Services\Google\GoogleRequestUrlBuilder.cs" />
+    <Compile Include="Services\Google\GoogleResponseParser.cs" />
     <Compile Include="Services\IGeocodingService.cs" />
     <Compile Include="Services\IGeocodingServiceResult.cs" />
   </ItemGroup>
