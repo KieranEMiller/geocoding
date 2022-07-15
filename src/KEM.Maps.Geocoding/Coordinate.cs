@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KEM.Maps.Geocoding
 {
-    public class Coordinates
+    public class Coordinate
     {
         public double Latitude { get; set; }
 
