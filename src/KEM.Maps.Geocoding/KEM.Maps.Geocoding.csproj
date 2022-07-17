@@ -52,10 +52,10 @@
     <Compile Include="Services\Google\GoogleMaps.cs" />
     <Compile Include="Services\Google\GoogleRequestUrlBuilder.cs" />
     <Compile Include="Services\Google\GoogleResponseParser.cs" />
+    <Compile Include="Services\Http\HttpClientWrapper.cs" />
     <Compile Include="Services\IGeocodingService.cs" />
     <Compile Include="Services\IGeocodingServiceResult.cs" />
-    <Compile Include="Services\IHttpWebRequest.cs" />
-    <Compile Include="Services\IHttpWebResponse.cs" />
+    <Compile Include="Services\Http\IHttpClient.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

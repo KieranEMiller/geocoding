@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KEM.Maps.Geocoding.Services
+namespace KEM.Maps.Geocoding.Services.Http
 {
-    internal class IHttpWebRequest
+    public interface IHttpClient
     {
+        string IssueGetRequest(string uri);
     }
 }
