@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Address.cs" />
-    <Compile Include="Coordinates.cs" />
+    <Compile Include="Coordinate.cs" />
     <Compile Include="Data\IGeocodingDataSource.cs" />
     <Compile Include="IGeolocatableByAddress.cs" />
     <Compile Include="IGeolocatableByCoordinates.cs" />
