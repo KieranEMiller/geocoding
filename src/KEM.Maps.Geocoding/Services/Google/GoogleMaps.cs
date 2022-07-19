@@ -20,7 +20,7 @@ namespace KEM.Maps.Geocoding.Services
         }
 
         public GoogleMaps(IHttpClient httpClient)
-        : base(httpClient)
+            : base(httpClient)
         {
             _apiKey = LoadApiKeyFromConfig();
         }
@@ -67,7 +67,5 @@ namespace KEM.Maps.Geocoding.Services
         {
             throw new NotImplementedException();
         }
-
-        private 
     }
 }
