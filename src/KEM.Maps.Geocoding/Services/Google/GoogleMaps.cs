@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KEM.Maps.Geocoding.Services.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -9,8 +10,28 @@ using System.Xml.Linq;
 
 namespace KEM.Maps.Geocoding.Services
 {
-    public class GoogleMaps : IGeocodingService
+    public class GoogleMaps : BaseGeocodingService, IGeocodingService
     {
+        private const string APP_SETTINGS_GOOGLE_API_KEY = "geocoding-svc-google-api-key";
+
+        public GoogleMaps()
+        {
+            _apiKey = LoadApiKeyFromConfig();
+        }
+
+        public GoogleMaps(IHttpClient httpClient)
+        : base(httpClient)
+        {
+            _apiKey = LoadApiKeyFromConfig();
+        }
+
+        private string _apiKey;
+
+        private string LoadApiKeyFromConfig()
+        {
+            return System.Configuration.ConfigurationManager.AppSettings[APP_SETTINGS_GOOGLE_API_KEY];
+        }
+
         public Coordinates Run(Address address, string apiKey)
         {
             string addr = $"{address.Street1}, {address.City}, {address.State}, {address.Zip}";
