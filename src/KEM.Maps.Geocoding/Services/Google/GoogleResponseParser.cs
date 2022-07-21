@@ -10,26 +10,23 @@ namespace KEM.Maps.Geocoding.Services.Google
 {
     public class GoogleResponseParser
     {
-        public Coordinate Parse(WebResponse response)
+        public IGeocodingServiceResult Parse(string response)
         {
-            using (var stream = response.GetResponseStream())
+            var xml = XDocument.Parse(response);
+            var xmlEleResponse =  xml.Element(GoogleConstants.Xml.ELEMENT_NAME_RESPONSE);
+            if (xmlEleResponse == null)
+                throw new ArgumentException($"response did not contain expected element {GoogleConstants.Xml.ELEMENT_NAME_RESPONSE}", GoogleConstants.Xml.ELEMENT_NAME_RESPONSE);
+
+            XElement locationElement = xmlEleResponse
+                .Element(GoogleConstants.Xml.ELEMENT_NAME_RESULT)
+                .Element(GoogleConstants.Xml.ELEMENT_NAME_GEOMETRY)
+                .Element(GoogleConstants.Xml.ELEMENT_NAME_LOCATION);
+
+            return new Geocoding.Coordinate()
             {
-                var xml = XDocument.Load(stream);
-                var xmlEleResponse =  xml.Element(GoogleConstants.Xml.ELEMENT_NAME_RESPONSE);
-                if (xmlEleResponse == null)
-                    throw new ArgumentException($"response did not contain expected element {GoogleConstants.Xml.ELEMENT_NAME_RESPONSE}", GoogleConstants.Xml.ELEMENT_NAME_RESPONSE);
-
-                XElement locationElement = xmlEleResponse
-                    .Element(GoogleConstants.Xml.ELEMENT_NAME_RESULT)
-                    .Element(GoogleConstants.Xml.ELEMENT_NAME_GEOMETRY)
-                    .Element(GoogleConstants.Xml.ELEMENT_NAME_LOCATION);
-
-                return new Geocoding.Coordinate()
-                {
-                    Latitude=TryExtractCoordinateComponent(locationElement, GoogleConstants.Xml.ELEMENT_NAME_LATITUDE),
-                    Longitude= TryExtractCoordinateComponent(locationElement, GoogleConstants.Xml.ELEMENT_NAME_LONGITUDE)
-                };
-            }
+                Latitude = TryExtractCoordinateComponent(locationElement, GoogleConstants.Xml.ELEMENT_NAME_LATITUDE),
+                Longitude = TryExtractCoordinateComponent(locationElement, GoogleConstants.Xml.ELEMENT_NAME_LONGITUDE)
+            };
         }
 
         private double TryExtractCoordinateComponent(XElement locationElement, string coordinateComponentName)

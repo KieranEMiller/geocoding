@@ -8,6 +8,8 @@ namespace KEM.Maps.Geocoding.Services.Google
 {
     public class GoogleRequestUrlBuilder
     {
+        private const string APP_SETTINGS_GOOGLE_API_KEY = "geocoding-svc-google-api-key";
+
         public GoogleRequestUrlBuilder(string apiKey)
         {
             _apiKey = apiKey;

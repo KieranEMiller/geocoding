@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace KEM.Maps.Geocoding.Services
+namespace KEM.Maps.Geocoding.Services.Google
 {
     public class GoogleMaps : BaseGeocodingService, IGeocodingService
     {
@@ -32,35 +32,17 @@ namespace KEM.Maps.Geocoding.Services
             return System.Configuration.ConfigurationManager.AppSettings[APP_SETTINGS_GOOGLE_API_KEY];
         }
 
-        public Coordinates Run(Address address, string apiKey)
-        {
-            string addr = $"{address.Street1}, {address.City}, {address.State}, {address.Zip}";
-            var coords = GetLatLng(addr);
-            return coords;
-        }
-
-        public Coordinates GetLatLng(string address)
-        {
-            string requestUri = string.Format("https://maps.googleapis.com/maps/api/geocode/xml?key={1}&address={0}&sensor=false", Uri.EscapeDataString(address), API_KEY);
-            var client = new HttpClient();
-            client.PostAsync
-            WebRequest request = WebRequest.Create(requestUri);
-            WebResponse response = request.GetResponse();
-            XDocument xdoc = XDocument.Load(response.GetResponseStream());
-
-            XElement result = xdoc.Element("GeocodeResponse").Element("result");
-            XElement locationElement = result.Element("geometry").Element("location");
-            XElement lat = locationElement.Element("lat");
-            XElement lng = locationElement.Element("lng");
-
-            var coords = new LatLng(decimal.Parse(lat.Value), decimal.Parse(lng.Value));
-
-            return coords;
-        }
-
         public IGeocodingServiceResult GeocodeByAddress(IGeolocatableByAddress address)
         {
-            throw new NotImplementedException();
+            var urlBuilder = new GoogleRequestUrlBuilder(_apiKey);
+
+            string addressAsString = $"{address.Street1}, {address.City}, {address.State}, {address.Zip}";
+            var url = urlBuilder.Build(addressAsString);
+
+            string result = _httpClient.IssueGetRequest(url);
+            var responseParser = new GoogleResponseParser();
+
+            return responseParser.Parse(result);
         }
 
         public IGeocodingServiceResult GeocodeByCoordinates(IGeolocatableByCoordinates coords)

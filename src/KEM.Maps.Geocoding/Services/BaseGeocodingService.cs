@@ -18,6 +18,6 @@ namespace KEM.Maps.Geocoding.Services
             _httpClient = client;
         }
 
-        private IHttpClient _httpClient;
+        protected IHttpClient _httpClient;
     }
 }
