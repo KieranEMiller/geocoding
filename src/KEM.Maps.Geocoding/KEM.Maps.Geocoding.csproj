@@ -48,6 +48,8 @@
     <Compile Include="IGeolocatableByAddress.cs" />
     <Compile Include="IGeolocatableByCoordinates.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Proximity\GeocodeProximity.cs" />
+    <Compile Include="Proximity\ProximityResult.cs" />
     <Compile Include="Services\BaseGeocodingService.cs" />
     <Compile Include="Services\Google\GoogleConstants.cs" />
     <Compile Include="Services\Google\GoogleMaps.cs" />
