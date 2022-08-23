@@ -37,7 +37,7 @@ namespace KEM.Maps.Geocoding.Proximity
             var fromCoord = new GeoCoordinate(from.Latitude, from.Longitude);
             var toCoord = new GeoCoordinate(to.Latitude, to.Longitude);
 
-            double distanceinMeters = fromCoord.GetDistanceTo(toCoord);
+            double distanceInMeters = fromCoord.GetDistanceTo(toCoord);
             return distanceInMeters;
         }
     }
