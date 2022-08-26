@@ -67,11 +67,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="KnownCoordinates.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProximityTests\GeocodeProximityTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KEM.Maps.Geocoding\KEM.Maps.Geocoding.csproj">
+      <Project>{32838e04-41e6-4853-9fe7-5717409527d7}</Project>
+      <Name>KEM.Maps.Geocoding</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
