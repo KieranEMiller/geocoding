@@ -7,7 +7,10 @@ using System.Threading.Tasks;
 
 namespace KEM.Maps.Geocoding
 {
-    public class Coordinate : IGeocodingServiceResult
+    public class Coordinate : 
+        IGeocodingServiceResult, 
+        IGeolocatableByCoordinates,
+        IEquatable<Coordinate>
     {
         public Coordinate()
         { }
@@ -21,5 +24,20 @@ namespace KEM.Maps.Geocoding
         public double Latitude { get; set; }
 
         public double Longitude { get; set; }
+
+        public bool Equals(Coordinate other)
+        {
+            if (other == null) return false;
+
+            if (this.Latitude == other.Latitude && this.Longitude == other.Longitude)
+                return true;
+
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return this.Longitude.GetHashCode() + this.Latitude.GetHashCode();
+        }
     }
 }
