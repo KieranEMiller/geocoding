@@ -23,5 +23,12 @@ namespace KEM.Maps.Geocoding
         public double Latitude { get; set; }
 
         public double Longitude { get; set; }
+
+        bool IEquatable<IGeolocatableByCoordinates>.Equals(IGeolocatableByCoordinates other)
+        {
+            if (other == null) return false;
+
+            return this.Latitude == other.Latitude && this.Longitude == other.Longitude;
+        }
     }
 }

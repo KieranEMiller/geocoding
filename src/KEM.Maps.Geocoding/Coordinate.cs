@@ -29,15 +29,19 @@ namespace KEM.Maps.Geocoding
         {
             if (other == null) return false;
 
-            if (this.Latitude == other.Latitude && this.Longitude == other.Longitude)
-                return true;
-
-            return false;
+            return this.Latitude == other.Latitude && this.Longitude == other.Longitude;
         }
 
         public override int GetHashCode()
         {
-            return this.Longitude.GetHashCode() + this.Latitude.GetHashCode();
+            return HashCode.Combine(this.Latitude, this.Longitude);
+        }
+
+        bool IEquatable<IGeolocatableByCoordinates>.Equals(IGeolocatableByCoordinates other)
+        {
+            if (other == null) return false;
+
+            return this.Latitude == other.Latitude && this.Longitude == other.Longitude;
         }
     }
 }

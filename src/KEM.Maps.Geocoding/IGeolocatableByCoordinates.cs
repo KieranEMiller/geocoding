@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KEM.Maps.Geocoding
 {
-    public interface IGeolocatableByCoordinates
+    public interface IGeolocatableByCoordinates : IEquatable<IGeolocatableByCoordinates>
     {
         double Latitude { get; set; }
 
