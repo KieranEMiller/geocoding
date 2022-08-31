@@ -12,12 +12,19 @@ namespace KEM.Maps.Geocoding.Proximity
         public IList<ProximityResult> CalculateProximityMatrix(IList<IGeolocatableByCoordinates> inputCoords)
         {
             var results = new List<ProximityResult>();
+            var alreadyComputed = new HashSet<int>();
 
             foreach(var fromCoord in inputCoords)
             {
                 foreach(var toCoord in inputCoords)
                 {
-                    //TODO: avoid computing distance to itself
+                    //don't calculate proximity to itself
+                    if (fromCoord.Equals(toCoord)) continue;
+
+                    //don't calculate if this pair of coordinates has already been computed
+                    int coordinatesHash = HashCode.Combine(fromCoord.GetHashCode(), toCoord.GetHashCode());
+                    if(alreadyComputed.Contains(coordinatesHash)) continue;
+
                     double distanceInMeters = CalculateDistanceInMeters(fromCoord, toCoord);
                     var proximityResult = new ProximityResult()
                     {
@@ -26,6 +33,7 @@ namespace KEM.Maps.Geocoding.Proximity
                         DistanceInMeters = distanceInMeters
                     };
                     results.Add(proximityResult);
+                    alreadyComputed.Add(coordinatesHash);
                 }
             }
 
