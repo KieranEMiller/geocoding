@@ -12,6 +12,9 @@ namespace KEM.Maps.Geocoding.Proximity
         public IList<ProximityResult> CalculateProximityMatrix(IList<IGeolocatableByCoordinates> inputCoords)
         {
             var results = new List<ProximityResult>();
+            if (inputCoords == null)
+                return results;
+
             var alreadyComputed = new HashSet<int>();
 
             foreach(var fromCoord in inputCoords)
